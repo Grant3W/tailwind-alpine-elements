@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search with Keyboard Shortcut</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="max-w-2xl mx-auto h-screen flex justify-center items-center flex-wrap flex-col">
+
+        <p class="text-gray-300 mb-5">Hit <code>/</code> on your keyboard to focus.</p>
+
+        <!-- State: Without Results -->
+        <div class="h-12 flex items-center w-2/3 group" x-data="{}">
+            <input
+            x-ref="search"
+            type="text"
+            class="bg-white w-full h-full rounded-tl rounded-bl text-gray-700 p-3 focus:outline-none"
+            x-on:keydown.window.slash.prevent="$refs.search.focus()" >
+            <div class="bg-white rounded-tr rounded-br h-full w-10 flex items-center justify-center">
+                <div class="border rounded text-sm text-gray-300 px-2 py-0.5">/</div>
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

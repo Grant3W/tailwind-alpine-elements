@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Autosizing Text Area</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="max-w-2xl mx-auto h-screen flex justify-center items-center px-6 md:p-0">
+        <textarea 
+        class="w-full rounded shadow-sm px-2 py-3 text-gray-700 focus:outline-none"
+        placeholder="Write your message here..."
+        x-data="{
+            refresh() {
+                $el.style.height = '80px'
+                $el.style.height = ($el.scrollHeight + 10) + 'px'
+            }
+        }"
+        x-init="refresh"
+        x-on:input="refresh"
+        ></textarea>
+    </div>
+    
+</body>
+</html>
