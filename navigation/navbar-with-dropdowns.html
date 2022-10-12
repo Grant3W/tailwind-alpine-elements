@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Navbar With Dropdowns</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="mx-auto h-screen flex justify-center items-center flex-wrap flex-col">
+
+        <p class="text-gray-500 mb-5">A basic, non-responsive, navigation bar that uses Alpine JS for its dropdowns.</p>
+
+        <div x-data="basicNavigation" class="flex w-full bg-green-600" style="height:70px">
+
+                <div @mouseover="toggleIndex(1)" @mouseout="toggleIndex(1)" class="group relative w-max z-50">
+                    <a class="relative flex h-full py-4 px-3 items-center font-bold text-white group-hover:bg-green-700 group-hover:text-gray-200" href="#">
+                        Category One
+                    </a>
+                    <div x-show="activeIndex == 1" class="absolute bg-green-700 w-max flex flex-col" style="display: none">
+                        <a class="text-white px-3 py-2 hover:bg-green-600 hover:text-white" href='#'>Child Category One</a>
+                        <a class="text-white px-3 py-2 hover:bg-green-600 hover:text-white" href='#'>Child Category Two</a>
+                    </div>
+                </div>
+
+                <div @mouseover="toggleIndex(2)" @mouseout="toggleIndex(2)" class="group relative w-max z-50">
+                    <a class="relative flex h-full py-4 px-3 items-center font-bold text-white group-hover:bg-green-700 group-hover:text-gray-200" href="#">
+                        Category Two
+                    </a>
+                    <div x-show="activeIndex == 2" class="absolute bg-green-700 w-max flex flex-col" style="display: none">
+                        <a class="text-white px-3 py-2 hover:bg-green-600 hover:text-white" href='#'>Child Category Three</a>
+                        <a class="text-white px-3 py-2 hover:bg-green-600 hover:text-white" href='#'>Child Category Four</a>
+                    </div>
+                </div>
+
+        </div>
+        
+    </div>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('basicNavigation', () => ({
+                activeIndex: 0,
+
+                toggleIndex(i) {
+                    if(this.activeIndex == i) {
+                        this.activeIndex = 0
+                    } else {
+                        this.activeIndex = i
+                    }
+                },
+            }))
+        })
+    </script>
+</body>
+</html>
